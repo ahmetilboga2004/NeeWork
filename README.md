@@ -1,12 +1,11 @@
 # <span style="color:#583893">NEEWORK</span>
 
 </br>
-</br>
 
 ### <span style="color:#AC2F3C"> - Yapılacaklar</span>
 
-    - App.js
-    - Routes
+    - App.js dosyası oluştur
+    - Routes dosyası oluştur (sayfalar için)
     - Views
         - Anasayfa
         - Sidebar
@@ -15,7 +14,7 @@
         - Sipariş verme sayfası
         - Kayıt Ol sayfası
         - Giriş Sayfası
-    - Controller
+    - Controller dosyası oluştur (sayfalar için)
 
 </br>
 
