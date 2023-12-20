@@ -1,10 +1,7 @@
 # <span style="color:#583893">NEEWORK</span>
 
-</br>
-
 ### <span style="color:#AC2F3C"> - Yapılacaklar</span>
 
-    - App.js dosyası oluştur
     - Routes dosyası oluştur (sayfalar için)
     - Views
         - Anasayfa
@@ -19,3 +16,17 @@
 </br>
 
 ### <span style="color:#53AC2F"> + Yapıldı</span>
+
+    + Yapılandırma dosyası oluşturuldu (npm init)
+    + app.js dosyası oluşturuldu
+    + Tailwind paketi kuruldu
+    + public/ klasörü oluşturuldu
+        + tailwind.css
+        + css/
+            + styles.css
+        + js/
+        + images/
+    + views/ klasörü oluşturuldu
+        + index.html
+    + .gitignore dosyası oluşturuldu
+    + navbar menu rengi eklendi

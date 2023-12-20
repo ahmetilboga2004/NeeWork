@@ -1,0 +1,27 @@
+{
+  "name": "neework",
+  "version": "1.0.0",
+  "description": "NeeWork modern Freelancer platform",
+  "main": "app.js",
+  "scripts": {
+    "watch": "npx tailwindcss -i ./public/tailwind.css -o ./public/css/styles.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahmetilboga2004/NeeWork.git"
+  },
+  "keywords": [
+    "NeeWork",
+    "Freelance",
+    "Customer"
+  ],
+  "author": "Ahmet İlboga",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ahmetilboga2004/NeeWork/issues"
+  },
+  "homepage": "https://github.com/ahmetilboga2004/NeeWork#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}
