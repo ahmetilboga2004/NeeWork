@@ -4,7 +4,9 @@
 
 <span style="color:orange"> Yeni görevler listenin altına eklenecek </span>
 
-- Routes dosyası oluştur (sayfalar için)
+- Kategori alanının içi doldurulacak.
+- Seçtiğimiz kategorilerin ve filtrelerin bilgisi için oluşturduğum alan doldurulacak.
+- Routes dosyası oluşturulacak (sayfalar için)
 - Views
   - Anasayfa
   - Sidebar
@@ -13,7 +15,7 @@
   - Sipariş verme sayfası
   - Kayıt Ol sayfası
   - Giriş Sayfası
-- Controller dosyası oluştur (sayfalar için)
+- Controller dosyası oluşturulacak (sayfalar için)
 
 ### <span style="color:#53AC2F"> + Yapıldı</span>
 
@@ -32,3 +34,8 @@
   - index.html
 - .gitignore dosyası oluşturuldu
 - navbar menu rengi eklendi
+- Flowbite tailwind kütüphanesi eklendi
+- Sidebar eklendi
+- header main yapısı oturdu
+- ilan kartları oluşturuldu
+- kategori ve arama alanı oluşturuldu

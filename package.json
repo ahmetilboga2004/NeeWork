@@ -23,5 +23,8 @@
   "homepage": "https://github.com/ahmetilboga2004/NeeWork#readme",
   "devDependencies": {
     "tailwindcss": "^3.4.0"
+  },
+  "dependencies": {
+    "flowbite": "^2.2.1"
   }
 }
