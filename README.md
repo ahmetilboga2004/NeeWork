@@ -19,11 +19,12 @@
 
 ### <span style="color:#53AC2F"> + Yapıldı</span>
 
-<span style="color:orange"> En son bitirilen görevler listenin yukarısına eklenecek </span>
+<span style="color:orange"> En son bitirilen görevler listenin altına eklenecek </span>
 
-- Yapılandırma dosyası oluşturuldu (npm init)
-- app.js dosyası oluşturuldu
-- Tailwind paketi kuruldu
+- navbar menu rengi eklendi
+- .gitignore dosyası oluşturuldu
+- views/ klasörü oluşturuldu
+  - index.html
 - public/ klasörü oluşturuldu
   - tailwind.css
   - css/
