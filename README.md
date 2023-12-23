@@ -39,3 +39,5 @@
 - header main yapısı oturdu
 - ilan kartları oluşturuldu
 - kategori ve arama alanı oluşturuldu
+- Responsive için uyumluluk düzeltildi
+- Kategori içerikleri oluşturuldu
