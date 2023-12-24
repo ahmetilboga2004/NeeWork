@@ -4,8 +4,7 @@
 
 <span style="color:orange"> Yeni görevler listenin altına eklenecek </span>
 
-- Kategori alanının içi doldurulacak.
-- Seçtiğimiz kategorilerin ve filtrelerin bilgisi için oluşturduğum alan doldurulacak.
+- İlan ekleme sayfası oluşturlacak.
 - Routes dosyası oluşturulacak (sayfalar için)
 - Views
   - Anasayfa
