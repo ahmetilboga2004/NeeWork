@@ -4,7 +4,7 @@
 
 <span style="color:orange"> Yeni görevler listenin altına eklenecek </span>
 
-- İlan ekleme sayfası oluşturlacak.
+- Freelancer ve Customer Profil Sayfası oluştur
 - Routes dosyası oluşturulacak (sayfalar için)
 - Views
   - Anasayfa
@@ -41,3 +41,4 @@
 - kategori ve arama alanı oluşturuldu
 - Responsive için uyumluluk düzeltildi
 - Kategori içerikleri oluşturuldu
+- İlan Sayfası oluşturuldu.
