@@ -42,3 +42,4 @@
 - Responsive için uyumluluk düzeltildi
 - Kategori içerikleri oluşturuldu
 - İlan Sayfası oluşturuldu.
+- Freelancer Profil sayfası oluşturuldu

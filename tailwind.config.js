@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       colors: {
         colorYellow: "#FBFF14",
+        gold: "#ffd700",
       },
       backgroundColor: {
         navbar: "#FBFF14",
