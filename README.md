@@ -43,3 +43,4 @@
 - Kategori içerikleri oluşturuldu
 - İlan Sayfası oluşturuldu.
 - Freelancer Profil sayfası oluşturuldu
+- Freelaner Profil sayfasına hizmetler ve projeler alanları eklendi
