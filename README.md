@@ -4,17 +4,15 @@
 
 <span style="color:orange"> Yeni görevler listenin altına eklenecek </span>
 
-- Freelancer ve Customer Profil Sayfası oluştur
+- Chat sayfasına düzenlemeler gelecek
+- Frontend ve Backend farklı dizinlere ayrılacak
+- Backend veritabanı yapısı kurulacak
 - Routes dosyası oluşturulacak (sayfalar için)
-- Views
-  - Anasayfa
-  - Sidebar
-  - İlan Yayınlama sayfası
-  - Profil sayfası
-  - Sipariş verme sayfası
-  - Kayıt Ol sayfası
-  - Giriş Sayfası
 - Controller dosyası oluşturulacak (sayfalar için)
+
+### <span style="color:#321FDE"> + Yapılıyor</span>
+
+- Chat Sayfasının düzenlemeleri..
 
 ### <span style="color:#53AC2F"> + Yapıldı</span>
 
@@ -44,3 +42,11 @@
 - İlan Sayfası oluşturuldu.
 - Freelancer Profil sayfası oluşturuldu
 - Freelaner Profil sayfasına hizmetler ve projeler alanları eklendi
+- Customer Profil Sayfası oluşturuldu
+- İlan detayı sayfası oluşturuldu
+- Hizmet detayı sayfası oluşturuldu
+- Freelancer için hizmetlerim sayfası oluşturuldu
+- Kayıt ol Giriş yap sayfaları oluşturuldu
+- 404 Sayfası oluşturuldu
+- İş İlanı Yayınlama ve Hizmet Oluşturma sayfaları oluşturuldu
+- Chat sayfası oluşturuldu.
