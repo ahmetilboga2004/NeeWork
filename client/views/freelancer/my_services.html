@@ -1,0 +1,311 @@
+{% extends "layouts/base.html" %}
+{% block title %}
+    Hizmetlerim
+{% endblock %}
+{% block content %}
+
+    <div class="p-4 flex flex-col h-fit mb-4 rounded-lg bg-white">
+        <div class="mb-4">
+            <h1 class="text-4xl font-extrabold font-kanit">Hizmetlerim</h1>
+            <p class="text-stone-950 font-medium">
+                Hizmetlerinizi bulun, güncelleyin veya silin
+            </p>
+        </div>
+        <div class="my-auto flex  flex-wrap gap-4 flex-row justify-between items-center">
+            <form class="flex items-center">
+                <label for="simple-search" class="sr-only">Ara</label>
+                <div class="relative w-fit">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" aria-hidden="true" viewbox="0 0 512 512">
+                            <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/>
+                        </svg>
+                    </div>
+                    <input type="text" id="simple-search" class="border border-black text-gray-900 text-sm rounded-lg focus:ring-black focus:border-black block w-full ps-10 p-2.5" placeholder="Hizmet ara..." required="required"/>
+                </div>
+                <button type="submit" class="p-2.5 ms-2 text-sm font-medium text-black border-black bg-navbar rounded-lg border border-yellow hover:bg-yellow-200 focus:ring-4 focus:outline-none focus:ring-yellow-200">
+                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                    </svg>
+                    <span class="sr-only">Search</span>
+                </button>
+            </form>
+            <button class="py-2 px-6 flex bg-colorYellow hover:bg-gold rounded-lg border border-black text-black">Yeni Hizmet</button>
+        </div>
+    </div>
+
+    <div class="flex flex-col-reverse gap-4 mb-4 lg:flex-row ">
+
+        <div class="grid grid-cols-1 gap-4 xl:grid-cols-2 2xl:grid-cols-3">
+            <div class="card h-max grid rounded-lg bg-white">
+
+                <div>
+                    <div class="h-40 overflow-hidden">
+                        <img class="rounded-t-lg object-cover w-full h-full" src="/images/web-development.png" alt="product image"/>
+                    </div>
+                    <div class="p-4">
+                        <div>
+                            <a href="#">
+                                <h5 class="mb-2 text-lg font-semibold tracking-tight text-gray-900">
+                                    Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport</h5>
+                            </a>
+                            <div class="flex items-center mt-2.5 mb-5">
+                                <div class="flex items-center space-x-1 rtl:space-x-reverse">
+                                    <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewbox="0 0 22 20">
+                                        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewbox="0 0 22 20">
+                                        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewbox="0 0 22 20">
+                                        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewbox="0 0 22 20">
+                                        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewbox="0 0 22 20">
+                                        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                                    </svg>
+                                </div>
+                                <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">4.0</span>
+                            </div>
+                            <p class="text-sm">Ben Django ile istediğiniz fullStack E-Ticaret Sitesi geliştirebilir. Eğer isterseniz sadece FullStack, Backend yada Front End alanlarından birini geliştirebilirim.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="self-end p-4">
+                    <div class="flex items-center justify-between">
+                        <div class="text-lg bg-green-50 rounded-lg p-2 w-fit font-bold">
+                            <p>
+                                <i class="fa-solid fa-turkish-lira-sign text-green-500 mr-2"></i>1500</p>
+                        </div>
+                        <div>
+                            <button id="dropdownMenuIconHorizontalButton2" data-dropdown-toggle="dropdownDotsHorizontal2" class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600" type="button">
+                                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewbox="0 0 16 3">
+                                    <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
+                                </svg>
+                            </button>
+
+                            <!-- Dropdown menu -->
+                            <div id="dropdownDotsHorizontal2" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconHorizontalButton2">
+                                    <li>
+                                        <a type="button" data-drawer-target="drawer-right-example" data-drawer-show="drawer-right-example" data-drawer-placement="right" aria-controls="drawer-right-example" class="block px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                            <i class="fa-solid fa-pen-to-square mr-2"></i>Düzenle</a>
+                                    </li>
+                                    <li>
+                                        <a type="button" data-drawer-target="drawer-right-preview" data-drawer-show="drawer-right-preview" data-drawer-placement="right" aria-controls="drawer-right-preview" class="block px-4 py-2 hover:bg-gray-100 cursor-pointer dark:hover:bg-gray-600 dark:hover:text-white">
+                                            <i class="fa-solid fa-eye mr-2"></i>Önizleme</a>
+                                    </li>
+                                    <li>
+                                        <a type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="block px-4 py-2 hover:bg-gray-100 cursor-pointer dark:hover:bg-gray-600 dark:hover:text-white">
+                                            <i class="fa-solid fa-trash mr-2"></i>Sil</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex-1">
+            <div id="kategori" class="rounded-lg lg:w-[30vh] sticky top-[100px] lg:h-[70vh] bg-white">
+                <div class="text-center w-full p-4 rounded-t-lg bg-navbar mb-4 font-bold text-gray-800 text-2xl">
+                    Kategori
+                </div>
+
+                <div class="grid gap-4 p-3">
+
+                    <div id="accordion-flush" data-accordion="collapse" data-active-classes="bg-white dark:bg-gray-900 text-gray-900 dark:text-white" data-inactive-classes="text-gray-500 dark:text-gray-400">
+                        <h2 id="accordion-flush-heading-1">
+                            <button type="button" class="flex items-center justify-between w-full py-3 font-medium text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3" data-accordion-target="#accordion-flush-body-1" aria-expanded="true" aria-controls="accordion-flush-body-1">
+                                <span>
+                                    <i class="fa-solid fa-circle-check"></i>
+                                    İlan Durumu</span>
+                                <svg data-accordion-icon="data-accordion-icon" class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-body-1" class="hidden" aria-labelledby="accordion-flush-heading-1">
+                            <div class="py-5 border-b border-gray-200 dark:border-gray-700">
+                                <fieldset>
+                                    <div class="flex items-center mb-4">
+                                        <input id="country-option-1" type="radio" name="countries" value="USA" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600" checked="checked"/>
+                                        <label for="country-option-1" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                            <i class="fa-solid fa-earth-europe"></i>
+                                            Açık
+                                        </label>
+                                    </div>
+
+                                    <div class="flex items-center mb-4">
+                                        <input id="country-option-2" type="radio" name="countries" value="Germany" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600"/>
+                                        <label for="country-option-2" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                            <i class="fa-solid fa-check-double"></i>
+                                            Tamamlandı
+                                        </label>
+                                    </div>
+
+                                    <div class="flex items-center mb-4">
+                                        <input id="country-option-3" type="radio" name="countries" value="Spain" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600"/>
+                                        <label for="country-option-3" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                            <i class="fa-solid fa-ban"></i>
+                                            İptal Edildi
+                                        </label>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <h2 id="accordion-flush-heading-2">
+                            <button type="button" class="flex items-center justify-between w-full py-3 font-medium text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3" data-accordion-target="#accordion-flush-body-2" aria-expanded="false" aria-controls="accordion-flush-body-2">
+                                <span>
+                                    <i class="fa-solid fa-calendar-days"></i>
+                                    Yayınlanma Tarihi</span>
+                                <svg data-accordion-icon="data-accordion-icon" class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-body-2" class="hidden" aria-labelledby="accordion-flush-heading-2">
+                            <div class="py-5 border-b border-gray-200 dark:border-gray-700">
+                                <div class="mb-4">
+                                    <fieldset>
+                                        <div class="flex items-center mb-4">
+                                            <input id="country-option-1" type="radio" name="countries" value="USA" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600" checked="checked"/>
+                                            <label for="country-option-1" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                                Bugün
+                                            </label>
+                                        </div>
+
+                                        <div class="flex items-center mb-4">
+                                            <input id="country-option-2" type="radio" name="countries" value="Germany" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600"/>
+                                            <label for="country-option-2" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                                3 gün önce
+                                            </label>
+                                        </div>
+
+                                        <div class="flex items-center mb-4">
+                                            <input id="country-option-3" type="radio" name="countries" value="Spain" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600"/>
+                                            <label for="country-option-3" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                                7 gün önce
+                                            </label>
+                                        </div>
+
+                                        <div class="flex items-center mb-4">
+                                            <input id="country-option-3" type="radio" name="countries" value="Spain" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600"/>
+                                            <label for="country-option-3" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                                1 ay önce
+                                            </label>
+                                        </div>
+                                    </fieldset>
+                                </div>
+
+                                <div class="relative max-w-sm">
+                                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewbox="0 0 20 20">
+                                            <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                                        </svg>
+                                    </div>
+                                    <input datepicker="datepicker" datepicker-autohide="datepicker-autohide" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Yayınlanma Tarihi">
+                                </div>
+
+                            </div>
+                        </div>
+                        <h2 id="accordion-flush-heading-3">
+                            <button type="button" class="flex items-center justify-between w-full py-3 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3" data-accordion-target="#accordion-flush-body-3" aria-expanded="false" aria-controls="accordion-flush-body-3">
+                                <span>
+                                    <i class="fa-solid fa-flag-checkered"></i>
+                                    Son Teslim Tarihi</span>
+                                <svg data-accordion-icon="data-accordion-icon" class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-body-3" class="hidden" aria-labelledby="accordion-flush-heading-3">
+                            <div class="py-5 border-b border-gray-200 dark:border-gray-700">
+                                <div class="mb-4">
+                                    <fieldset>
+                                        <div class="flex items-center mb-4">
+                                            <input id="country-option-1" type="radio" name="countries" value="USA" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600" checked="checked"/>
+                                            <label for="country-option-1" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                                Bugün
+                                            </label>
+                                        </div>
+
+                                        <div class="flex items-center mb-4">
+                                            <input id="country-option-2" type="radio" name="countries" value="Germany" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600"/>
+                                            <label for="country-option-2" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                                3 gün içinde
+                                            </label>
+                                        </div>
+
+                                        <div class="flex items-center mb-4">
+                                            <input id="country-option-3" type="radio" name="countries" value="Spain" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600"/>
+                                            <label for="country-option-3" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                                7 gün içinde
+                                            </label>
+                                        </div>
+
+                                        <div class="flex items-center mb-4">
+                                            <input id="country-option-3" type="radio" name="countries" value="Spain" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600"/>
+                                            <label for="country-option-3" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                                15 gün içinde
+                                            </label>
+                                        </div>
+
+                                        <div class="flex items-center mb-4">
+                                            <input id="country-option-3" type="radio" name="countries" value="Spain" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600"/>
+                                            <label for="country-option-3" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                                1 ay içinde
+                                            </label>
+                                        </div>
+                                        <div class="flex items-center mb-4">
+                                            <input id="country-option-3" type="radio" name="countries" value="Spain" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600"/>
+                                            <label for="country-option-3" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                                2 ay içinde
+                                            </label>
+                                        </div>
+                                    </fieldset>
+                                </div>
+
+                                <div class="relative max-w-sm">
+                                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewbox="0 0 20 20">
+                                            <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                                        </svg>
+                                    </div>
+                                    <input datepicker="datepicker" datepicker-autohide="datepicker-autohide" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Son Teslim Tarihi">
+                                </div>
+                            </div>
+                        </div>
+                        <h2 id="accordion-flush-heading-4">
+                            <button type="button" class="flex items-center justify-between w-full py-3 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3" data-accordion-target="#accordion-flush-body-4" aria-expanded="false" aria-controls="accordion-flush-body-4">
+                                <span>
+                                    <i class="fa-solid fa-sack-dollar"></i>
+                                    Bütçe</span>
+                                <svg data-accordion-icon="data-accordion-icon" class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-body-4" class="hidden" aria-labelledby="accordion-flush-heading-4">
+                            <div class="py-5 border-b border-gray-200 dark:border-gray-700">
+                                <div class="grid grid-cols-2 gap-4">
+                                    <input type="number" id="min" min="50" max="5000" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="En az"/>
+
+                                    <input type="number" id="max" min="50" max="5000" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="En fazla"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="py-2 px-4 bg-colorYellow hover:bg-gold rounded-lg border border-black text-black">Filtrele</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include "layouts/_deletePopup.html" %}
+    {% include "layouts/_editDrawer.html" %}
+    {% include "layouts/_detayPreviewDrawer.html" %}
+
+{% endblock %}

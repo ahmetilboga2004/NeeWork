@@ -4,10 +4,10 @@
 
 <span style="color:orange"> Yeni görevler listenin altına eklenecek </span>
 
-- Chat sayfasına düzenlemeler gelecek
-- Frontend ve Backend farklı dizinlere ayrılacak
+- Enpointler Oluşturulacak
+- Bazı şablon düzenlemeleri yapılacak
 - Backend veritabanı yapısı kurulacak
-- Routes dosyası oluşturulacak (sayfalar için)
+
 - Controller dosyası oluşturulacak (sayfalar için)
 
 ### <span style="color:#321FDE"> + Yapılıyor</span>
@@ -50,3 +50,6 @@
 - 404 Sayfası oluşturuldu
 - İş İlanı Yayınlama ve Hizmet Oluşturma sayfaları oluşturuldu
 - Chat sayfası oluşturuldu.
+- Chat sayfasına düzenlemeler yapıldı
+- Frontend ve Backend farklı dizinlere ayrıldı
+- Routes dosyası oluşturuldu (sayfalar için)
