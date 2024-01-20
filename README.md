@@ -2,21 +2,21 @@
 
 ### <span style="color:#AC2F3C"> - Yapılacaklar </span>
 
-<span style="color:orange"> Yeni görevler listenin altına eklenecek </span>
-
-- Enpointler Oluşturulacak
+- Bütün Kategori ve Alt Kategori bilgileri manuel olarak veritabanına eklenecek.
+- Filtreleme Apisi oluşturulacak.
+- Passport Js konfigürasyonu yapılacak
+- Authenticate işlemleri için gerekli hazırlıklar yapılacak
+- Google ile giriş yapma özelliği eklenecek.
+- Session için gerekli işlemler yapılacak.
+- Session ile Veritabanı ilişkilendirmesi yapılacak.
+- Yetkilendirme işlemi yapılacak
 - Bazı şablon düzenlemeleri yapılacak
-- Backend veritabanı yapısı kurulacak
-
-- Controller dosyası oluşturulacak (sayfalar için)
 
 ### <span style="color:#321FDE"> + Yapılıyor</span>
 
 - Chat Sayfasının düzenlemeleri..
 
 ### <span style="color:#53AC2F"> + Yapıldı</span>
-
-<span style="color:orange"> En son bitirilen görevler listenin altına eklenecek </span>
 
 - navbar menu rengi eklendi
 - .gitignore dosyası oluşturuldu
@@ -53,3 +53,13 @@
 - Chat sayfasına düzenlemeler yapıldı
 - Frontend ve Backend farklı dizinlere ayrıldı
 - Routes dosyası oluşturuldu (sayfalar için)
+- Veritabanı konfigürasyonu yapıldı
+- Veritabanı modellemesi yapıldı
+- Veritabanı başlatma işlemi için server dosyasına gerekli kodlar yazıldı
+- Veritabanı ilişkilendirme dosyası oluşturuldu: relationship
+- Veritabanı tabloları oluşturuldu
+- Apiler oluşturuldu
+- Freelancer, Freelancer Service, Customer, Customer Service, Category, Sub Category controller oluşturuldu
+- Freelancer, Freelancer Service, Customer, Customer Service, Category, Sub Category router oluşturuldu
+- Freelancer, Freelancer Service, Customer, Customer Service, Category, Sub Category model oluşturuldu
+- Utils/ controlHelper dosyası oluşturuldu.

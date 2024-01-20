@@ -1,4 +1,4 @@
-{% extends "layout/base.html" %}
+{% extends "layouts/base.html" %}
 {% block title %}
   İş İlanı Ara
 {% endblock %}
@@ -270,6 +270,7 @@
       </div>
     </div>
   </div>
+  {% include "layouts/_ilanDetay.html" %}
 {% endblock %}
 {% block script %}
 

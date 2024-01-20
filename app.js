@@ -1,6 +1,9 @@
 // ** 3. Parti Modüller
-const app = require("./server/server");
-require("dotenv").config();
+import app from "./server/server.js";
+import dotenv from "dotenv";
+
+dotenv.config();
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {

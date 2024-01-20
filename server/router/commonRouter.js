@@ -1,20 +1,16 @@
-const express = require("express");
+// * 3. Parti Modüller
+import express from "express";
 const router = express.Router();
 
-router.get("/login", (req, res) => {
-  res.render("login");
-});
+// * My Modules
+import * as commonController from "../controller/commonController.js";
 
-router.get("/register", (req, res) => {
-  res.render("register");
-});
+router.get("/login", commonController.loginPage);
 
-router.get("/404", (req, res) => {
-  res.render("404");
-});
+router.get("/register", commonController.registerPage);
 
-router.get("/chat", (req, res) => {
-  res.render("chat");
-});
+router.get("/404", commonController.notFoundPage);
 
-module.exports = router;
+router.get("/chat", commonController.chatPage);
+
+export default router;

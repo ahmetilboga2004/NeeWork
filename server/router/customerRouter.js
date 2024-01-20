@@ -1,20 +1,26 @@
-const express = require("express");
+// * 3. Parti Modüller
+import express from "express";
 const router = express.Router();
 
-router.get("/find-services", (req, res) => {
-  res.render("customer/find_services");
-});
+// * My Modules
+import * as customerController from "../controller/customerController.js";
 
-router.get("/my-jobs", (req, res) => {
-  res.render("customer/my_jobs");
-});
+router.get("/find-services", customerController.findServicesPage);
 
-router.get("/post-job", (req, res) => {
-  res.render("customer/post_job");
-});
+router.get("/my-jobs", customerController.myJobsPage);
 
-router.get("/profile", (req, res) => {
-  res.render("customer/profile");
-});
+router.get("/post-job", customerController.postJobPage);
 
-module.exports = router;
+router.get("/profile", customerController.profilePage);
+
+router.get("/all", customerController.getAllCustomer);
+
+router.get("/:id", customerController.getCustomer);
+
+router.post("/", customerController.addCustomer);
+
+router.delete("/:id", customerController.deleteCustomer);
+
+router.put("/:id", customerController.updateCustomer);
+
+export default router;

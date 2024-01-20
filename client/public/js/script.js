@@ -1,3 +1,5 @@
+import { getAllUser } from "./test.js";
+
 const socialMediaIcon = () => {
   return {
     socialMediaLink: "",
@@ -42,3 +44,6 @@ const socialMediaIcon = () => {
     socialMediaAdd() {},
   };
 };
+
+console.log("bu script dosyasıdır.");
+getAllUser();

@@ -1,20 +1,30 @@
-const express = require("express");
+// * 3. Parti Modüller
+import express from "express";
 const router = express.Router();
 
-router.get("/find-jobs", (req, res) => {
-  res.render("freelancer/find_job");
-});
+// * Core Modüller
 
-router.get("/my-services", (req, res) => {
-  res.render("freelancer/my_services");
-});
+// * My Modules
+import * as freelancerController from "../controller/freelancerController.js";
 
-router.get("/post-service", (req, res) => {
-  res.render("freelancer/post_service");
-});
+router.get("/", freelancerController.redirectFindJobPage);
 
-router.get("/profile", (req, res) => {
-  res.render("freelancer/profile");
-});
+router.get("/find-job", freelancerController.findJobPage);
 
-module.exports = router;
+router.get("/my-services", freelancerController.myServicesPage);
+
+router.get("/post-service", freelancerController.postServicePage);
+
+router.get("/profile", freelancerController.profilePage);
+
+router.get("/all", freelancerController.getAllFreelancer);
+
+router.get("/:id", freelancerController.getFreelaner);
+
+router.post("/", freelancerController.addFreelancer);
+
+router.delete("/:id", freelancerController.deleteFreelancer);
+
+router.put("/:id", freelancerController.updateFreelancer);
+
+export default router;
