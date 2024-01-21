@@ -10,6 +10,8 @@ router.get("/:id", subCategoryController.getSubCategory);
 
 router.post("/", subCategoryController.addSubCategory);
 
+router.post("/bulk", subCategoryController.addBulkSubCategory);
+
 router.delete("/:id", subCategoryController.deleteSubCategory);
 
 router.put("/:id", subCategoryController.updateSubCategory);

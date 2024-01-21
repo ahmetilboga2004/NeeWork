@@ -15,7 +15,7 @@ const freelancerServices = sequelize.define("service", {
     allowNull: false,
   },
   price: {
-    type: DataTypes.SMALLINT,
+    type: DataTypes.INTEGER,
     allowNull: false,
   },
   status: {

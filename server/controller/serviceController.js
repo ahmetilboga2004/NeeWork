@@ -1,5 +1,7 @@
 import freelancerServices from "../models/freelancerService.js";
-import validator from "validator";
+import Op from "@sequelize/core";
+import Category from "../models/category.js";
+import subCategory from "../models/subCategory.js";
 
 // * My Modules
 import ch from "../utils/controlHelper.js";
@@ -61,13 +63,15 @@ export const getAllServices = async (req, res) => {
 
 export const addService = async (req, res) => {
   try {
-    const { name, shortDesc, details, price, freelancerId } = req.body;
+    const { name, shortDesc, details, price, freelancerId, subcategoryId } =
+      req.body;
     const service = await freelancerServices.create({
       name: name,
       shortDesc: shortDesc,
       details: details,
       price: price,
       freelancerId: freelancerId,
+      subcategoryId: subcategoryId,
     });
     if (service) {
       console.log("Yeni hizmet başarıyla oluştu: ", service);
@@ -130,7 +134,7 @@ export const updateService = async (req, res) => {
     const newData = req.body;
     const id = req.params.id;
     if (!ch.idControl(id)) {
-      res.status(401).json({
+      return res.status(401).json({
         error: "Lütfen geçerli bir id numarası girin",
       });
     }
@@ -162,6 +166,187 @@ export const updateService = async (req, res) => {
     console.log(error);
     res.status(500).json({
       error: error,
+    });
+  }
+};
+
+export const categoryService = async (req, res) => {
+  try {
+    const category = req.params.category;
+
+    // Kategori bilgisini bul
+    const selectedCategory = await Category.findOne({
+      where: {
+        name: category,
+      },
+    });
+    if (!selectedCategory) {
+      console.log("Böyle bir kategori yok");
+      res.status(401).json({
+        error: "Böyle bir kategori yok",
+      });
+    } else {
+      console.log("SELECTED CATEGORY", selectedCategory.toJSON()); // Kategori bilgisini daha anlamlı bir şekilde yazdır
+
+      // Alt kategorileri bul
+      const subCategories = await subCategory.findAll({
+        where: {
+          categoryId: selectedCategory.id,
+        },
+      });
+      if (subCategories.length > 0) {
+        // * Alt kategori bilgilerini yazdır
+        console.log(
+          "SUB CATEGORIES",
+          subCategories.map((subCat) => subCat.toJSON())
+        );
+
+        // * Alt kategorileri bir dizi haline getir
+        const subCategoryIds = subCategories.map((subCat) => subCat.id);
+        console.log("SUB CATEGORY IDs", subCategoryIds);
+
+        // Tüm servisleri bul
+        const allServices = await freelancerServices.findAll({
+          where: {
+            subcategoryId: subCategoryIds,
+          },
+        });
+
+        // Tüm servis bilgilirini yazdır
+        console.log(
+          "ALL SERVICES",
+          allServices.map((service) => service.toJSON())
+        );
+
+        if (allServices.length > 0) {
+          console.log(allServices);
+          res.status(200).json({
+            data: allServices,
+            message: `${selectedCategory.name} kategorisine ait hizmet bilgileri alındı`,
+          });
+        } else {
+          res.status(401).json({
+            error: `${selectedCategory.name} kategorisine ait hizmet bilgisi bulunamadı`,
+          });
+        }
+      } else {
+        console.log(
+          `${selectedCategory.name} kategorisine ait bir alt kategori bulunamadı`
+        );
+        res.status(401).json({
+          error: `${selectedCategory.name} kategorisine ait bir alt kategori bulunamadı`,
+        });
+      }
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      error:
+        "Seçtiğiniz kategoriye göre hizmet bilgisi alınırken bir hata oluştu. Lütfen daha sonra tekrar deneyin!",
+    });
+  }
+};
+
+export const subCategoryService = async (req, res) => {
+  try {
+    const { category, subcategory } = req.params;
+    console.log(subcategory);
+    const selectedCategory = await Category.findOne({
+      where: {
+        name: category,
+      },
+    });
+    if (selectedCategory) {
+      const selectedSubCategory = await subCategory.findOne({
+        where: {
+          categoryId: selectedCategory.id,
+        },
+      });
+      console.log(selectedSubCategory);
+      console.log(selectedSubCategory.id);
+      if (selectedSubCategory) {
+        const allServices = await freelancerServices.findAll({
+          where: {
+            subcategoryId: selectedSubCategory.id,
+          },
+        });
+        if (allServices.length > 0) {
+          console.log(allServices);
+          res.status(200).json({
+            data: allServices,
+            message: `${selectedSubCategory.name} kategorisine ait tüm hizmetler başarıyla alındı`,
+          });
+        } else {
+          console.log(
+            `${selectedSubCategory.name} kategorisine ait hizmet bilgisi bulunamadı`
+          );
+          res.status(401).json({
+            error: `${selectedSubCategory.name} kategorisine ait hizmet bilgisi bulunamadı!`,
+          });
+        }
+      } else {
+        console.log(`${selectedSubCategory.name} kategorisi bulunamadı`);
+        res.status(401).json({
+          error: `${selectedSubCategory.name} kategorisi bulunamadı!`,
+        });
+      }
+    } else {
+      console.log(`${selectedCategory.name} kategorisi bulunamadı`);
+      res.status(401).json({
+        error: `${selectedCategory.name} kategorisi bulunamadı!`,
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      error:
+        "Seçtiğiniz alt kategoriye ait hizmet bilgileri alınırken bir hata oluştu. Lütfen daha sonra tekrar deneyin!",
+    });
+  }
+};
+
+export const filterService = async (req, res) => {
+  try {
+    const { service_status, publish_date, est_delivery_time, service_price } =
+      req.query;
+    const filters = {};
+    if (service_status) {
+      filters.status = service_status;
+    }
+    if (publish_date) {
+      const startDate = new Date(publish_date);
+      const endDate = new Date(startDate);
+      console.log("\n\n\n", endDate);
+      endDate.setDate(endDate.getDate() + 1); // Bir sonraki günü alır.
+      filters.createdAt = { [Op.between]: [startDate, endDate] };
+    }
+    console.log(filters.createdAt);
+    if (est_delivery_time) {
+      filters.est_delivery_time = est_delivery_time;
+    }
+    if (service_price) {
+      filters.price = service_price;
+    }
+    const services = await freelancerServices.findAll({
+      where: filters,
+    });
+    if (services.length > 0) {
+      console.log(services);
+      res.status(200).json({
+        data: services,
+        message: "Hizmetler başarıyla filtrelendi",
+      });
+    } else {
+      console.log("\n\n\nHizmetler Filtrelenemedi");
+      res.status(401).json({
+        error: "Hizmetler filtrelenemedi!",
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      error:
+        "Hizmet Filtrelenirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
     });
   }
 };

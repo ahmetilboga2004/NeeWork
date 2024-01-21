@@ -42,7 +42,7 @@ export const getCustomer = async (req, res) => {
   try {
     const id = req.params.id;
     if (!ch.idControl(id)) {
-      res.status(401).json({
+      return res.status(401).json({
         error: "Lütfen geçerli bir id numarası girin",
       });
     }
@@ -115,7 +115,7 @@ export const deleteCustomer = async (req, res) => {
   try {
     const id = req.params.id;
     if (!ch.idControl(id)) {
-      res.status(401).json({
+      return res.status(401).json({
         error: "Lütfen geçerli bir id numarası girin",
       });
     }
@@ -154,7 +154,7 @@ export const updateCustomer = async (req, res) => {
     const updateData = req.body;
     const id = req.params.id;
     if (!ch.idControl(id)) {
-      res.status(401).json({
+      return res.status(401).json({
         error: "Lütfen geçerli bir id numarası girin",
       });
     }

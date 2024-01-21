@@ -49,7 +49,7 @@ export const getFreelaner = async (req, res) => {
   try {
     const id = req.params.id;
     if (!ch.idControl(id)) {
-      res.status(401).json({
+      return res.status(401).json({
         error: "Lütfen geçerli bir id numarası girin",
       });
     }
@@ -123,7 +123,7 @@ export const deleteFreelancer = async (req, res) => {
   try {
     const id = req.params.id;
     if (!ch.idControl(id)) {
-      res.status(401).json({
+      return res.status(401).json({
         error: "Lütfen geçerli bir id numarası girin",
       });
     }

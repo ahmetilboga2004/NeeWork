@@ -5,7 +5,7 @@ export const getSubCategory = async (req, res) => {
   try {
     const id = req.params.id;
     if (!ch.idControl(id)) {
-      res.status(401).json({
+      return res.status(401).json({
         error: "Lütfen geçerli bir id numarası girin",
       });
     }
@@ -57,9 +57,10 @@ export const getAllSubCategory = async (req, res) => {
 
 export const addSubCategory = async (req, res) => {
   try {
-    const { name } = req.body;
+    const { name, categoryId } = req.body;
     const subcategory = await subCategory.create({
       name: name,
+      categoryId: categoryId,
     });
     if (subCategory) {
       console.log(subcategory);
@@ -83,12 +84,37 @@ export const addSubCategory = async (req, res) => {
   }
 };
 
+export const addBulkSubCategory = async (req, res) => {
+  try {
+    const subCategoriesDatas = req.body;
+    const subcategories = await subCategory.bulkCreate(subCategoriesDatas);
+    if (subcategories) {
+      console.log(subcategories);
+      res.status(200).json({
+        data: subcategories,
+        message: "Alt kategoriler başarılı bir şekilde eklendi",
+      });
+    } else {
+      console.log("\n\n\nAlt kategoriler ekleenemedi");
+      res.status(401).json({
+        error: "Alt kategoriler eklenemedi!",
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      error:
+        "Alt Kategoriler eklenirken bir hata oluştu. Lütfen daha sonra tekrar deneyin!",
+    });
+  }
+};
+
 export const updateSubCategory = async (req, res) => {
   try {
     const id = req.params.id;
     const newData = req.body;
     if (!ch.idControl(id)) {
-      res.status(401).json({
+      return res.status(401).json({
         error: "Lütfen geçerli bir id numarası girin",
       });
     }
@@ -131,7 +157,7 @@ export const deleteSubCategory = async (req, res) => {
   try {
     const id = req.params.id;
     if (!ch.idControl(id)) {
-      res.status(401).json({
+      return res.status(401).json({
         error: "Lütfen geçerli bir id numarası girin",
       });
     }

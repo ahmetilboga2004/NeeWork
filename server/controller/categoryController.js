@@ -7,7 +7,7 @@ export const getCategory = async (req, res) => {
   try {
     const id = req.params.id;
     if (!ch.idControl(id)) {
-      res.status(401).json({
+      return res.status(401).json({
         error: "Lütfen geçerli bir id numarası girin",
       });
     }
@@ -85,6 +85,30 @@ export const addCategory = async (req, res) => {
   }
 };
 
+export const addBulkCategory = async (req, res) => {
+  try {
+    const newCategoryData = req.body;
+    const categories = await Category.bulkCreate(newCategoryData);
+    if (categories) {
+      console.log(categories);
+      res.status(200).json({
+        data: categories,
+        message: "Kategoriler başarılı bir şekilde eklendi",
+      });
+    } else {
+      res.status(401).json({
+        error: "Kategoriler eklenemedi!",
+      });
+    }
+  } catch (error) {
+    console.loh(error);
+    res.status(500).json({
+      error:
+        "Kategoriler Eklenirken bir hata oluştu. Lütfen daha sonra tekrar deneyin!",
+    });
+  }
+};
+
 export const updateCategory = async (req, res) => {
   try {
     const updateData = req.body;
@@ -131,7 +155,7 @@ export const deleteCategory = async (req, res) => {
   try {
     const id = req.params.id;
     if (!ch.idControl(id)) {
-      res.status(401).json({
+      return res.status(401).json({
         error: "Lütfen geçerli bir id numarası girin",
       });
     }

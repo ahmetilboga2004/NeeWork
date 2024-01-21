@@ -7,15 +7,15 @@ const customerJobs = sequelize.define("job", {
     allowNull: false,
   },
   shortDesc: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
     allowNull: false,
   },
   details: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
     allowNull: false,
   },
   price: {
-    type: DataTypes.SMALLINT,
+    type: DataTypes.INTEGER,
     allowNull: false,
   },
   status: {

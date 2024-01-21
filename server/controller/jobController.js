@@ -1,4 +1,9 @@
 import customerJobs from "../models/customerJob.js";
+import Category from "../models/category.js";
+import subCategory from "../models/subCategory.js";
+
+// * My Modules
+import ch from "../utils/controlHelper.js";
 
 export const getAllJob = async (req, res) => {
   try {
@@ -27,7 +32,7 @@ export const getJob = async (req, res) => {
   try {
     const id = req.params.id;
     if (!ch.idControl(id)) {
-      res.status(401).json({
+      return res.status(401).json({
         error: "Lütfen geçerli bir id numarası girin",
       });
     }
@@ -40,7 +45,7 @@ export const getJob = async (req, res) => {
       });
     } else {
       res.status(401).json({
-        error: "İş İlanı bilgisi alınamadı",
+        error: "İş İlanı bilgisi bulunamadı",
       });
     }
   } catch (error) {
@@ -85,7 +90,7 @@ export const deleteJob = async (req, res) => {
   try {
     const id = req.params.id;
     if (!ch.idControl(id)) {
-      res.status(401).json({
+      return res.status(401).json({
         error: "Lütfen geçerli bir id numarası girin",
       });
     }
@@ -118,12 +123,69 @@ export const deleteJob = async (req, res) => {
   }
 };
 
+export const subCategoryJob = async (req, res) => {
+  try {
+    const { category, subcategory } = req.params;
+    const selectedCategory = await Category.findOne({
+      where: {
+        name: category,
+      },
+    });
+    if (selectedCategory) {
+      console.log(selectedCategory.name);
+      const selectedSubCategory = await subCategory.findOne({
+        where: {
+          name: subcategory,
+        },
+      });
+      if (selectedSubCategory) {
+        console.log(selectedSubCategory.name);
+        const allJob = await customerJobs.findAll({
+          where: {
+            subcategoryId: selectedSubCategory.id,
+          },
+        });
+        if (allJob.length > 0) {
+          console.log(allJob);
+          res.status(200).json({
+            data: allJob,
+            message: `${selectedSubCategory.name} kategorisine ait iş ilanları başarıyla alındı`,
+          });
+        } else {
+          console.log(
+            `${selectedSubCategory.name} alt kategorisine ait iş ilanı bulunamadı`
+          );
+          res.status(401).json({
+            error: `${selectedSubCategory.name} alt kategorisine ait iş ilanı bulunamadı`,
+          });
+        }
+      } else {
+        console.log(`${subcategory} alt kategorisi bulunamadı`);
+        res.status(401).json({
+          error: `${subcategory} alt kategorisi bulunamadı!`,
+        });
+      }
+    } else {
+      console.log(`${category} kategorisi bulunamadı`);
+      res.status(401).json({
+        error: `${category} kategorisi bulunamadı`,
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      error:
+        "Bu kategoriye ait iş ilanlarını alınırken bir hata oluştu. Lütfen daha sonra tekrar deneyin!",
+    });
+  }
+};
+
 export const updateJob = async (req, res) => {
   try {
     const newData = req.body;
     const id = req.params.id;
     if (!ch.idControl(id)) {
-      res.status(401).json({
+      return res.status(401).json({
         error: "Lütfen geçerli bir id numarası girin",
       });
     }

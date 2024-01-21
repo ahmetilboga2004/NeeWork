@@ -27,6 +27,7 @@
     "tailwindcss": "^3.4.0"
   },
   "dependencies": {
+    "@sequelize/core": "^7.0.0-alpha.29",
     "alpinejs": "^3.13.3",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",

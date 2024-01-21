@@ -10,6 +10,8 @@ router.get("/:id", categoryController.getCategory);
 
 router.post("/", categoryController.addCategory);
 
+router.post("/bulk", categoryController.addBulkCategory);
+
 router.delete("/:id", categoryController.deleteCategory);
 
 router.put("/:id", categoryController.updateCategory);

@@ -8,6 +8,7 @@ const idControl = (id) => {
     return true;
   }
 };
+
 const firstNameControl = (firstName) => {
   if (
     firstName !== null ||

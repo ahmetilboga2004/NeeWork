@@ -2,6 +2,7 @@
 
 ### <span style="color:#AC2F3C"> - Yapılacaklar </span>
 
+- Alt Kategorilere göre hizmet göstermek için bir sayfa oluştur.
 - Bütün Kategori ve Alt Kategori bilgileri manuel olarak veritabanına eklenecek.
 - Filtreleme Apisi oluşturulacak.
 - Passport Js konfigürasyonu yapılacak
