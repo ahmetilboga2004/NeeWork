@@ -16,7 +16,7 @@ export const getAllJob = async (req, res) => {
       });
     } else {
       console.log("İş ilanı bulunamadı");
-      res.status(401).json({
+      res.status(400).json({
         error: "İş İlanı bulunamadı",
       });
     }
@@ -32,7 +32,7 @@ export const getJob = async (req, res) => {
   try {
     const id = req.params.id;
     if (!ch.idControl(id)) {
-      return res.status(401).json({
+      return res.status(400).json({
         error: "Lütfen geçerli bir id numarası girin",
       });
     }
@@ -44,7 +44,7 @@ export const getJob = async (req, res) => {
         message: "İş İlanı bilgisi başarıyla alındı",
       });
     } else {
-      res.status(401).json({
+      res.status(400).json({
         error: "İş İlanı bilgisi bulunamadı",
       });
     }
@@ -73,7 +73,7 @@ export const addJob = async (req, res) => {
       });
     } else {
       console.log("İş İlanı eklenemedi: ", job);
-      res.status(401).json({
+      res.status(400).json({
         error: "İş İlanı eklenirken bir hata oluştu!",
       });
     }
@@ -90,7 +90,7 @@ export const deleteJob = async (req, res) => {
   try {
     const id = req.params.id;
     if (!ch.idControl(id)) {
-      return res.status(401).json({
+      return res.status(400).json({
         error: "Lütfen geçerli bir id numarası girin",
       });
     }
@@ -105,13 +105,13 @@ export const deleteJob = async (req, res) => {
         });
       } else {
         console.log("\n\n\n İş ilanı silinemedi");
-        res.status(401).json({
+        res.status(400).json({
           error: "İş İlanı bilgileri silinemedi",
         });
       }
     } else {
       console.log("Silmek istediğiniz iş ilanı bilgileri bulunamadı");
-      res.status(401).json({
+      res.status(400).json({
         error: "Silmek istediğiniz iş ilanı bulunamadu",
       });
     }
@@ -155,19 +155,19 @@ export const subCategoryJob = async (req, res) => {
           console.log(
             `${selectedSubCategory.name} alt kategorisine ait iş ilanı bulunamadı`
           );
-          res.status(401).json({
+          res.status(400).json({
             error: `${selectedSubCategory.name} alt kategorisine ait iş ilanı bulunamadı`,
           });
         }
       } else {
         console.log(`${subcategory} alt kategorisi bulunamadı`);
-        res.status(401).json({
+        res.status(400).json({
           error: `${subcategory} alt kategorisi bulunamadı!`,
         });
       }
     } else {
       console.log(`${category} kategorisi bulunamadı`);
-      res.status(401).json({
+      res.status(400).json({
         error: `${category} kategorisi bulunamadı`,
       });
     }
@@ -185,36 +185,36 @@ export const updateJob = async (req, res) => {
     const newData = req.body;
     const id = req.params.id;
     if (!ch.idControl(id)) {
-      return res.status(401).json({
+      return res.status(400).json({
         error: "Lütfen geçerli bir id numarası girin",
       });
     }
     const updatedJob = await customerJobs.findByPk(id);
-    console.log(updatedJob);
     if (updatedJob) {
-      const [job] = await customerJobs.update(newData, {
+      const [jobCount, job] = await customerJobs.update(newData, {
         where: {
           id: id,
         },
+        returning: true,
       });
-      if (job > 0) {
+      if (jobCount > 0) {
         console.log("\n\n\nGüncelleme Başarılı: ", job);
         // Burda eğer gerçekten güncellenmişse bize güncel verileri döndürecek.
         // Güncellenmediyse güncellemeden sonra yeniden istek atacaz DB'ye
-        console.log("işte güncellenen veriler: ", updatedJob);
+        // console.log("işte güncellenen veriler: ", updatedJob);
 
         res.status(200).json({
-          data: updatedJob,
+          data: job,
           message: "Güncelleme işlemi başarılı",
         });
       } else {
-        res.status(401).json({
+        res.status(400).json({
           error: "Güncelleme işlemi başarısız oldu ",
         });
       }
     } else {
       console.log("Güncellemek istediğiniz İş İlanı bulunamadı");
-      res.status(401).json({
+      res.status(400).json({
         error: "Güncellemek istediğiniz İş İlanı bilgileri bulunamadı",
       });
     }

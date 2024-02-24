@@ -3,8 +3,9 @@ const router = express.Router();
 
 // * My Modules
 import * as serviceController from "../controller/serviceController.js";
+import * as authMiddle from "../middleware/auth.js";
 
-router.get("/", serviceController.getAllServices);
+router.get("/", authMiddle.isLoggedIn, serviceController.getAllServices);
 
 router.get("/filter", serviceController.filterService);
 

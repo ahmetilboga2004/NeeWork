@@ -7,7 +7,7 @@ export const getCategory = async (req, res) => {
   try {
     const id = req.params.id;
     if (!ch.idControl(id)) {
-      return res.status(401).json({
+      return res.status(400).json({
         error: "Lütfen geçerli bir id numarası girin",
       });
     }
@@ -22,7 +22,7 @@ export const getCategory = async (req, res) => {
       });
     } else {
       console.log(category);
-      res.status(401).json({
+      res.status(400).json({
         error: "Kategori bilgisi alınırken bir hata oluştu",
       });
     }
@@ -46,7 +46,7 @@ export const getAllCategory = async (req, res) => {
       });
     } else {
       console.log("Kategori bilgisi bulanamadı");
-      res.status(401).json({
+      res.status(400).json({
         error: "Kategori bilgisi bulunamadı.",
       });
     }
@@ -72,7 +72,7 @@ export const addCategory = async (req, res) => {
       });
     } else {
       console.log(category);
-      res.status(401).json({
+      res.status(400).json({
         error: "Kategori ekleme işlemi başarısız oldu!",
       });
     }
@@ -96,7 +96,7 @@ export const addBulkCategory = async (req, res) => {
         message: "Kategoriler başarılı bir şekilde eklendi",
       });
     } else {
-      res.status(401).json({
+      res.status(400).json({
         error: "Kategoriler eklenemedi!",
       });
     }
@@ -115,7 +115,7 @@ export const updateCategory = async (req, res) => {
     console.log(updateData);
     const id = req.params.id;
     if (!ch.idControl(id)) {
-      return res.status(401).json({
+      return res.status(400).json({
         error: "Lütfen geçerli bir id numarası girin",
       });
     }
@@ -128,18 +128,18 @@ export const updateCategory = async (req, res) => {
       });
       if (category > 0) {
         console.log(category);
-        return res.status(201).json({
+        return res.status(200).json({
           data: updatedCategory,
           message: "Kategori başarıyla güncellendi",
         });
       } else {
-        res.status(401).json({
+        res.status(400).json({
           error: "Category güncellenirken bir hata oluştu",
         });
       }
     } else {
       console.log("Güncellemek istediğiniz Kategori Bulunamadı");
-      res.status(401).json({
+      res.status(400).json({
         error: "Güncellemek istediğiniz Kategori Bulunamadı",
       });
     }
@@ -155,7 +155,7 @@ export const deleteCategory = async (req, res) => {
   try {
     const id = req.params.id;
     if (!ch.idControl(id)) {
-      return res.status(401).json({
+      return res.status(400).json({
         error: "Lütfen geçerli bir id numarası girin",
       });
     }
@@ -174,13 +174,13 @@ export const deleteCategory = async (req, res) => {
         });
       } else {
         console.log("\n\n\n Kategori bilgisi silinemedi");
-        res.status(401).json({
+        res.status(400).json({
           error: "Kategori bilgisi silinemedi",
         });
       }
     } else {
       console.log("Silmek istediğiniz kategori bilgisi bulunamadı");
-      res.status(401).json({
+      res.status(400).json({
         error: "Silmek istediğiniz kategori bilgisi bulunamadı",
       });
     }

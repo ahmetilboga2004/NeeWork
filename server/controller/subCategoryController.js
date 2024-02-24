@@ -5,7 +5,7 @@ export const getSubCategory = async (req, res) => {
   try {
     const id = req.params.id;
     if (!ch.idControl(id)) {
-      return res.status(401).json({
+      return res.status(400).json({
         error: "Lütfen geçerli bir id numarası girin",
       });
     }
@@ -18,7 +18,7 @@ export const getSubCategory = async (req, res) => {
       });
     } else {
       console.log("Alt kategori bilgisi alınamadı");
-      res.status(401).json({
+      res.status(400).json({
         error: "Alt kategori bilgisi alınamadı",
       });
     }
@@ -42,7 +42,7 @@ export const getAllSubCategory = async (req, res) => {
       });
     } else {
       console.log("\n\n\nAlt Kategori bulunamadı");
-      res.status(401).json({
+      res.status(400).json({
         error: "Alt Kategoriler bulunamadı",
       });
     }
@@ -72,7 +72,7 @@ export const addSubCategory = async (req, res) => {
     } else {
       console.log(subcategory);
       console.log("\n\n\nAlt kategori eklenirken bir hata oluştu");
-      res.status(401).json({
+      res.status(400).json({
         error: "Alt kategori bilgisi eklenemedi!",
       });
     }
@@ -96,7 +96,7 @@ export const addBulkSubCategory = async (req, res) => {
       });
     } else {
       console.log("\n\n\nAlt kategoriler ekleenemedi");
-      res.status(401).json({
+      res.status(400).json({
         error: "Alt kategoriler eklenemedi!",
       });
     }
@@ -114,7 +114,7 @@ export const updateSubCategory = async (req, res) => {
     const id = req.params.id;
     const newData = req.body;
     if (!ch.idControl(id)) {
-      return res.status(401).json({
+      return res.status(400).json({
         error: "Lütfen geçerli bir id numarası girin",
       });
     }
@@ -134,13 +134,13 @@ export const updateSubCategory = async (req, res) => {
         });
       } else {
         console.log("Alt Kategori güncellenemedi");
-        res.status(401).json({
+        res.status(400).json({
           error: "Alt Kategori bilgisis güncellenemedi!",
         });
       }
     } else {
       console.log("Alt kategori bilgisi bulunamadı");
-      res.status(401).json({
+      res.status(400).json({
         error: "Güncellemek istediğiniz Alt Kategori bilgisi bulunamadı!",
       });
     }
@@ -157,7 +157,7 @@ export const deleteSubCategory = async (req, res) => {
   try {
     const id = req.params.id;
     if (!ch.idControl(id)) {
-      return res.status(401).json({
+      return res.status(400).json({
         error: "Lütfen geçerli bir id numarası girin",
       });
     }
@@ -177,13 +177,13 @@ export const deleteSubCategory = async (req, res) => {
         });
       } else {
         console.log("Alt kategori bilgisi silinemedi");
-        res.status(401).json({
+        res.status(400).json({
           error: "Alt kategori bilgisi silinemedi",
         });
       }
     } else {
       console.log("Alt kategori bilgisi bulunamadı");
-      res.status(401).json({
+      res.status(400).json({
         error: "Silmek istediğiniz alt kategori bilgisi bulunamadı",
       });
     }

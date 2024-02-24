@@ -7,19 +7,9 @@ const router = express.Router();
 // * My Modules
 import * as freelancerController from "../controller/freelancerController.js";
 
-router.get("/", freelancerController.redirectFindJobPage);
-
-router.get("/find-job", freelancerController.findJobPage);
-
-router.get("/my-services", freelancerController.myServicesPage);
-
-router.get("/post-service", freelancerController.postServicePage);
-
-router.get("/profile", freelancerController.profilePage);
-
 router.get("/all", freelancerController.getAllFreelancer);
 
-router.get("/:id", freelancerController.getFreelaner);
+router.get("/:id", freelancerController.getFreelancer);
 
 router.post("/", freelancerController.addFreelancer);
 
