@@ -43,7 +43,7 @@ const submitForm = async () => {
             await authStore.checkAuth()
             console.log(result.data.user)
             flashStore.setFlashMessage("Giriş Başarılı", "success")
-            router.replace(route.query.redirect || "/")
+            router.push(route.query.redirect || "/c")
         } else {
             console.error("giriş işlemi başarısız oldu: ", result.error)
             serverErrors.value = result.error

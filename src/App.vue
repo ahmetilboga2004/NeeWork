@@ -1,8 +1,14 @@
 <script setup>
-import NavBar from './components/NavBar.vue';
-import SideBar from './components/SideBar.vue';
+import NavBar from './components/NavBarItem.vue';
+import SideBar from './components/SideBarItem.vue';
 import FlashMessage from './components/FlashMessage.vue';
+import { onMounted } from 'vue'
+import { initFlowbite } from 'flowbite'
 
+// initialize components based on data attribute selectors
+onMounted(() => {
+    initFlowbite();
+})
 </script>
  
 <template>

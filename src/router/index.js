@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { defineAsyncComponent } from 'vue'
 // ! PAGES COMPONENT
 import HomeView from '../views/HomeView.vue'
 
@@ -6,19 +7,24 @@ import HomeView from '../views/HomeView.vue'
 import isLoggedIn from '@/guard/isLoggedIn'
 import checkRole from '@/guard/checkRole'
 import requireAuth from '@/guard/requireAuth'
+import logout from '@/guard/logout'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
       name: 'home',
-      component: HomeView,
-      beforeEnter: [isLoggedIn]
+      component: HomeView
     },
     {
       path: '/login',
       name: 'login',
       component: () => import('../views/LoginView.vue')
+    },
+    {
+      path: '/logout',
+      name: 'logout',
+      beforeEnter: logout
     },
     {
       path: '/register',

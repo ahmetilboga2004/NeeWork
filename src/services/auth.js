@@ -38,19 +38,3 @@ export const register = async (formDatas) => {
     console.error(error)
   }
 }
-
-export const logout = async () => {
-  try {
-    const response = await fetch('http://localhost:3000/auth/logout')
-    const data = await response.json()
-    if (response.ok) {
-      console.log('Çıkış işlemi başarılı bir şkeilde gerçekleşti', data)
-      return { success: true, data }
-    } else {
-      console.log('Çıkış işlemi başarısız oldu', data)
-      return { success: false, error: data }
-    }
-  } catch (error) {
-    console.error(error)
-  }
-}

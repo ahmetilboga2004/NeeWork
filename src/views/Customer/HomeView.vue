@@ -1,64 +1,46 @@
 <script setup>
-import ServiceItem from "@/components/Freelancer/ServiceItem.vue";
-import getAllServices from "@/services/Freelancer/getAllServices";
 import HeaderItem from '@/components/HeaderItem.vue';
-import moment from 'moment'
-
-
+import ServiceItem from '@/components/Freelancer/ServiceItem.vue';
+import getAllServices from "@/services/Freelancer/getAllServices";
+import HeaderAreaForm from '@/components/Customer/HeaderAreaForm.vue';
+import { FwbSpinner } from 'flowbite-vue'
+import { useServicesStore } from "@/stores/freelancerServices"
 import { ref, onMounted } from "vue"
-
-import { useRouter } from 'vue-router';
-const router = useRouter()
-const logout = async () => {
-    try {
-        const response = await fetch("http://localhost:3000/auth/logout", {
-            credentials: "include"
-        })
-        const data = await response.json()
-        if (response.ok) {
-            console.log("Çıkış işlemi başarılı bir şekilde gerçekleşti", data)
-            router.push("/login")
-        } else {
-            console.warn("Çıkış işlemi başarısız oldu: ", data)
-        }
-    } catch (error) {
-        console.error(error)
-    }
-}
-
-
-const services = ref({})
-const error = ref(null)
+const serviceStore = useServicesStore()
 const loading = ref(true)
-const title = ref("Hizmet Ara")
-const subTitle = ref("Yeteneklere göre yada hizmet kategorisine göre arayın. Aradığınız hizmeti anında bulun")
+const title = ref("Hizmet Ara");
+const subTitle = ref("Yeteneklere göre yada hizmet kategorisine göre arayın. Aradığınız hizmeti anında bulun");
 onMounted(async () => {
     const response = await getAllServices()
     if (response.success) {
-        services.value = await response.data.data.map((service) => ({
-            id: service.id,
-            userId: service.userId,
-            publishDate: moment(service.createdAt).format('YYYY-MM-DD'),
-            serviceHeader: service.title,
-            shortDesc: service.shortDesc,
-            detailDesc: service.details,
-            price: service.price,
-        }));
-        console.log(services.value)
-        loading.value = false
+        serviceStore.allServices = await response.data.data
+        setTimeout(() => {
+            loading.value = false
+        }, 3000)
+        console.log(serviceStore.allServices)
     } else {
-        error.value = response.error
-        console.log("RESPONSE ERROR: ", response.error)
+        console.log(response.error)
     }
 })
-</script>
-<template>
-    <HeaderItem :title="title" :sub-title="subTitle" />
-    <button @click="logout" class=" text-4xl font-open font-bold bg-gray-800"> Çıkış Yap </button>
 
+</script>
+
+<template>
+    <HeaderItem :title="title" :sub-title="subTitle">
+        <template #actionArea>
+            <HeaderAreaForm></HeaderAreaForm>
+        </template>
+    </HeaderItem>
     <div class="grid grid-cols-1 gap-4 xl:grid-cols-2 2xl:grid-cols-3">
-        <template v-for="service in services" :key="service.id">
-            <ServiceItem :service="service" />
+        <template v-if="loading">
+            <div class="flex py-96 items-center justify-center">
+                <fwb-spinner size="12" color="yellow" />
+            </div>
+        </template>
+        <template v-else>
+            <ServiceItem v-for="service in serviceStore.allServices" :key="service.id" :id="service.id"
+                :service-header="service.title" :short-desc="service.shortDesc" :price="service.price"
+                :publish-date="service.createdAt" :details="service.details" />
         </template>
     </div>
 </template>

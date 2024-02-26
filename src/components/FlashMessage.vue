@@ -5,7 +5,7 @@ const store = useFlashStore()
 
 </script>
 <template>
-    <fwb-toast v-if="store.showFlashMessage" closable :type="store.type">
+    <fwb-toast class="fixed bottom-5 right-5" v-if="store.showFlashMessage" closable :type="store.type">
         {{ store.message }}
     </fwb-toast>
 </template>

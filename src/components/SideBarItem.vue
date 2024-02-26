@@ -1,9 +1,7 @@
-<script>
-export default {
-    name: "SideBar"
-}
+<script setup>
+import { useAuthStore } from '@/stores/auth';
+const authStore = useAuthStore()
 </script>
-
 <template>
     <aside aria-hidden="false" aria-modal="true" id="logo-sidebar"
         class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-sidebar sm:translate-x-0">
@@ -66,14 +64,17 @@ export default {
                     </a>
                 </li>
                 <li>
-                    <a href="/login" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+                    <RouterLink :to="authStore.user ? '/logout' : '/login'"
+                        class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
                         <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 18 16">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3" />
                         </svg>
-                        <span class="flex-1 ms-3 whitespace-nowrap">Sign In</span>
-                    </a>
+                        <span class="flex-1 ms-3 whitespace-nowrap">{{ authStore.user ? 'Logout' : 'Login' }}</span>
+                    </RouterLink>
+
+
                 </li>
                 <li>
                     <a href="/register" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">

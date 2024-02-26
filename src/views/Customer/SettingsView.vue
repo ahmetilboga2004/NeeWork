@@ -6,28 +6,9 @@ import {
     FwbAccordionPanel,
 } from 'flowbite-vue'
 
-import { useRouter } from 'vue-router';
-const router = useRouter()
-const logout = async () => {
-    try {
-        const response = await fetch("http://localhost:3000/auth/logout", {
-            credentials: "include"
-        })
-        const data = await response.json()
-        if (response.ok) {
-            console.log("Çıkış işlemi başarılı bir şekilde gerçekleşti", data)
-            router.push("/login")
-        } else {
-            console.warn("Çıkış işlemi başarısız oldu: ", data)
-        }
-    } catch (error) {
-        console.error(error)
-    }
-}
 </script>
 <template>
     <h1>Customer Settings Page</h1>
-    <button @click="logout" class=" text-4xl font-open font-bold bg-gray-800"> Çıkış Yap </button>
 
     <h2>Bu sayfa müşterinin ayarlar sayfasıdır</h2>
     <fwb-accordion>
