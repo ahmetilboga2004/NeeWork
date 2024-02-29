@@ -18,6 +18,18 @@ const freelancerServices = sequelize.define("service", {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
+    likes: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+    },
+    popularity: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+    },
+    rating: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+    },
     status: {
         type: DataTypes.ENUM("active", "progress", "complated", "cancelled"),
         defaultValue: "active",

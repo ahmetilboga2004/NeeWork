@@ -9,10 +9,12 @@ import redisClient from "../config/redis.js";
 import Session from "../models/session.js";
 import { UAParser } from "ua-parser-js";
 import sequelize from "../config/database.js";
+import Category from "../models/category.js";
 
 export const registerController = async (req, res) => {
     try {
         const data = req.body;
+        console.log(data);
 
         const user = await User.create({
             firstName: data.name,
@@ -27,18 +29,32 @@ export const registerController = async (req, res) => {
         });
         console.log(user);
         if (user) {
-            // Kullanıcının rolüne göre ilgili tabloya kayıt yapılıyor
-            if (user.role === "freelancer") {
-                await Freelancer.create({ userId: user.id });
-            } else if (user.role === "customer") {
-                await Customer.create({ userId: user.id });
-            }
-            console.log("\n\n\nKULLANICI BAŞARIYLA KAYIT EDİLDİ: ", user);
-
-            res.status(200).json({
-                data: user,
-                message: "Kullanıcı başararıyla kayıt edildi",
+            const category = await Category.findOne({
+                where: {
+                    name: data.category,
+                },
             });
+            console.log("\n\n\n CATEGORY: ", category.id);
+            console.log("\n\n\n CATEGORY: ", category.name);
+            if (category) {
+                // Kullanıcının rolüne göre ilgili tabloya kayıt yapılıyor
+                if (user.role === "freelancer") {
+                    await Freelancer.create({
+                        meslek: data.meslek,
+                        userId: user.id,
+                        categoryId: category.id,
+                    });
+                } else if (user.role === "customer") {
+                    await Customer.create({ userId: user.id });
+                }
+
+                console.log("\n\n\nKULLANICI BAŞARIYLA KAYIT EDİLDİ: ", user);
+
+                res.status(200).json({
+                    data: user,
+                    message: "Kullanıcı başararıyla kayıt edildi",
+                });
+            }
         } else {
             console.log("\n\n\nKULLANICI KAYIT EDİLEMEDİ!!");
             res.status(400).json({
@@ -166,14 +182,21 @@ export const logout = async (req, res) => {
             },
             { transaction: t }
         );
+        console.log(req.session);
+        req.session.destroy(async (err) => {
+            if (err) {
+                res.status(400).json({
+                    message: "Çıkış işlemi yapılamadı!",
+                });
+            } else {
+                console.log(req.session);
+                res.cookie("connect.sid", "", { expires: new Date(0) }); // Tarayıcıdaki oturum çerezini silin
+                await t.commit();
 
-        req.session.destroy();
-        res.clearCookie("connect.sid"); // Tarayıcıdaki oturum çerezini silin
-
-        await t.commit();
-
-        res.status(200).json({
-            message: "Çıkış işlemi başarıyla tamamlandı!",
+                res.status(200).json({
+                    message: "Çıkış işlemi başarıyla tamamlandı!",
+                });
+            }
         });
     } catch (error) {
         console.error(error);

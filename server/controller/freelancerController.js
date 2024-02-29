@@ -1,4 +1,5 @@
 import Freelancer from "../models/freelancer.js";
+import User from "../models/user.js";
 import validator from "validator";
 
 // * My Modules
@@ -27,13 +28,16 @@ export const getAllFreelancer = async (req, res) => {
 
 export const getFreelancer = async (req, res) => {
     try {
-        const id = req.params.id;
-        if (!ch.idControl(id)) {
+        const username = req.params.username;
+        if (!ch.usernameControl(username)) {
             return res.status(400).json({
-                error: "Lütfen geçerli bir id numarası girin",
+                error: "Lütfen geçerli bir kullanıcı adı girin",
             });
         }
-        const freelancer = await Freelancer.findOne({ where: { id: id } });
+        const freelancer = await User.findOne({
+            include: Freelancer,
+            where: { username: username, role: "freelancer" },
+        });
         console.log(freelancer);
         if (freelancer) {
             res.status(200).json({

@@ -9,7 +9,7 @@ import * as freelancerController from "../controller/freelancerController.js";
 
 router.get("/all", freelancerController.getAllFreelancer);
 
-router.get("/:id", freelancerController.getFreelancer);
+router.get("/:username", freelancerController.getFreelancer);
 
 router.post("/", freelancerController.addFreelancer);
 

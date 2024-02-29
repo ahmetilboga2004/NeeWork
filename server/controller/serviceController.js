@@ -14,10 +14,33 @@ export const getService = async (req, res) => {
                 error: "Lütfen geçerli bir id numarası girin",
             });
         }
-        const service = await freelancerServices.findByPk(id);
-        console.log("\n\n\nHİZMET BİLGİSİ " + service + "\n\n\n");
+        const service = await freelancerServices.findByPk(id, {
+            include: {
+                model: User,
+                attributes: [
+                    "id",
+                    "firstName",
+                    "lastName",
+                    "meslek",
+                    "username",
+                    "role",
+                ],
+            },
+
+            attributes: [
+                "id",
+                "title",
+                "details",
+                "shortDesc",
+                "price",
+                "createdAt",
+            ],
+        });
+        console.log(
+            "\n\n\nHİZMET BİLGİSİ " + JSON.stringify(service) + "\n\n\n"
+        );
         if (service) {
-            console.log("\n\n\n" + service);
+            console.log("\n\n\n" + JSON.stringify(service));
             res.status(200).json({
                 data: service,
                 message: "Hizmet bilgileri başarıyla alındı",

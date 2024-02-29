@@ -37,6 +37,12 @@ const redisStore = new RedisStore({
 });
 
 app.use(
+    cors({
+        origin: "http://localhost:5173",
+        credentials: true,
+    })
+);
+app.use(
     session({
         store: redisStore,
         resave: false,
@@ -50,12 +56,6 @@ app.use(
 );
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(
-    cors({
-        origin: "http://localhost:5173",
-        credentials: true,
-    })
-);
 
 app.use("/freelancer", freelancerRouter);
 app.use("/customer", customerRouter);
