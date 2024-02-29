@@ -21,7 +21,7 @@ const formDatas = reactive({
 
 const formDatasRules = computed(() => {
     return {
-        username: { required, alphaNum },
+        username: { required },
         password: { required },
     }
 

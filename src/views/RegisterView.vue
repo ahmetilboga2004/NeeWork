@@ -1,28 +1,42 @@
 <script setup>
-import { computed, reactive, ref } from 'vue';
+import { computed, onMounted, reactive, ref } from 'vue';
 import useValidate from '@vuelidate/core'
 import { required, minLength, maxLength, alpha, alphaNum, email, sameAs } from '@vuelidate/validators'
 import RegisterEnd from '@/components/RegisterEnd.vue';
 import { register } from '@/services/auth';
+import getCategories from "@/services/getCategories"
 
 const currentStep = ref(1)
 const registerSuccess = ref(false)
+const categories = ref([])
 const formDatas = reactive({
     name: "",
     surname: "",
     username: "",
+    meslek: "",
+    category: "",
     email: "",
     password: "",
     confirmPassword: "",
     role: ""
 })
+const ifFreelancer = () => formDatas.role.value === "freelancer"
+
+onMounted(async () => {
+    const response = await getCategories()
+    if (response.success) {
+        const data = response.data.data
+        categories.value = data
+    }
+})
 
 const formDatasRules = computed(() => {
     return {
-
         name: { required, alpha, minLength: minLength(2), mmaxLength: maxLength(30) },
         surname: { required, alpha, minLength: minLength(2), maxLength: maxLength(30) },
         username: { required, alphaNum, minLength: minLength(4), maxLength: maxLength(15) },
+        meslek: { required: ifFreelancer(), alpha, minLength: minLength(4), maxLength: maxLength(50) },
+        category: { required: ifFreelancer() },
         email: { required, email },
         password: { required, minLength: minLength(8), maxLength: maxLength(20) },
         confirmPassword: { required, sameAs: sameAs(formDatas.password) },
@@ -54,7 +68,7 @@ const submitForm = async () => {
 </script>
 
 <template>
-    <div class="mx-auto grid justify-items-center p-4">
+    <div class=" xl:mx-auto grid justify-items-center p-4">
         <div class="w-full lg:w-2/5">
             <div class="bg-white rounded-lg p-4 flex items-center mb-4">
                 <div>
@@ -154,8 +168,34 @@ const submitForm = async () => {
                                 <small class=" text-red-600" v-if="error.$validator == 'maxLength'">En fazla 30
                                     karakter giriniz!</small>
                             </template>
-
-
+                        </div>
+                        <div v-if="formDatas.role === 'freelancer'" class="col-span-2">
+                            <label for="meslek" class="block mb-2 text-sm font-medium text-gray-900">Meslek</label>
+                            <input type="text" name="meslek" id="meslek" placeholder="Yazılım Geliştirici"
+                                v-model="formDatas.meslek"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
+                                required />
+                            <template v-for="error in v$.meslek.$errors" :key="error.$uid">
+                                <small class=" text-red-600" v-if="error.$validator == 'required'">Bu alan
+                                    zorunlu</small>
+                                <small class=" text-red-600" v-if="error.$validator == 'alpha'">sadece alfabetik
+                                    karakter giriniz!</small>
+                                <small class=" text-red-600" v-if="error.$validator == 'minLength'">En az 2 karakter
+                                    giriniz!</small>
+                                <small class=" text-red-600" v-if="error.$validator == 'maxLength'">En fazla 30
+                                    karakter giriniz!</small>
+                            </template>
+                        </div>
+                        <div v-if="formDatas.role === 'freelancer'" class="col-span-2">
+                            <label for="category" class="block mb-2 text-sm font-medium text-gray-900">Hizmet
+                                Kategorisi</label>
+                            <select name="category" id="category" v-model="formDatas.category"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                <option selected="selected">Hizmet Kategorisini seçin</option>
+                                <option v-for="category in categories" :key="category.id" :value="category.name">{{
+                                    category.name
+                                }}</option>
+                            </select>
                         </div>
                         <div class="col-span-2">
                             <label for="email" class="block mb-2 text-sm font-medium text-gray-900">E-Posta</label>

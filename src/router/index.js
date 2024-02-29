@@ -1,10 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { defineAsyncComponent } from 'vue'
 // ! PAGES COMPONENT
 import HomeView from '../views/HomeView.vue'
 
 // ! GUARDS
-import isLoggedIn from '@/guard/isLoggedIn'
+// import isLoggedIn from '@/guard/isLoggedIn'
 import checkRole from '@/guard/checkRole'
 import requireAuth from '@/guard/requireAuth'
 import logout from '@/guard/logout'
@@ -41,13 +40,13 @@ const router = createRouter({
       beforeEnter: [requireAuth, checkRole],
       children: [
         {
-          path: '',
-          name: 'freelancer-home',
+          path: 'home',
+          name: 'f-home',
           component: () => import('../views/Freelancer/HomeView.vue')
         },
         {
-          path: 'profile',
-          name: 'freelancer-profile',
+          path: ':username',
+          name: 'f-profile',
           component: () => import('../views/Freelancer/ProfileView.vue')
         },
         {
@@ -56,9 +55,13 @@ const router = createRouter({
           component: () => import('../views/Freelancer/NewServiceView.vue')
         },
         {
-          path: 'service/:id',
+          path: ':username/service/:id',
           name: 'service',
-          component: () => import('../views/Freelancer/ServiceView.vue')
+          component: () => import('../views/Freelancer/ServiceView.vue'),
+          meta: {
+            allowedRoles: ['freelancer', 'customer']
+          },
+          beforeEnter: checkRole
         },
         {
           path: 'services',
@@ -67,7 +70,7 @@ const router = createRouter({
         },
         {
           path: 'settings',
-          name: 'freelancer-settings',
+          name: 'f-settings',
           component: () => import('../views/Freelancer/SettingsView.vue')
         }
       ]
@@ -83,12 +86,12 @@ const router = createRouter({
       children: [
         {
           path: '',
-          name: 'customer-home',
+          name: 'c-home',
           component: () => import('../views/Customer/HomeView.vue')
         },
         {
           path: 'settings',
-          name: 'customer-settings',
+          name: 'c-settings',
           component: () => import('../views/Customer/SettingsView.vue')
         },
         {
@@ -104,6 +107,15 @@ const router = createRouter({
       component: () => import('../views/ChatView.vue')
     }
   ]
+})
+router.beforeEach((to, from, next) => {
+  if (to.name === 'service') {
+    console.log(to.params, to.fullPath, to.matched, to.path)
+    next()
+    return
+  }
+  next()
+  return
 })
 
 export default router

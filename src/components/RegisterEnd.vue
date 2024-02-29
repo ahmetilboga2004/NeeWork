@@ -7,7 +7,7 @@ defineProps({
 })
 </script>
 <template>
-    <div class="flex justify-center items-center mb-4">
+    <div class="flex justify-center items-center mb-4 mt-4">
         <div class="flex text-center flex-col items-center">
             <div :class="svgIcon" class="flex justify-center items-center p-4 rounded-full mb-3 opacity-75">
                 <img src="@/assets/images/logos/Untitled-1-04.svg" class="w-32 h-32 rotate-35" :alt="message" />
