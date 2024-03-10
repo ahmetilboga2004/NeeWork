@@ -4,7 +4,7 @@
             <div class="flex flex-row justify-start">
                 <div class="mr-4">
                     <!-- resim gelecek -->
-                    <img src="/images/icons8-alarm-clock-48.png" alt="">
+                    <img src="@/assets/images/icons8-alarm-clock-48.png" alt="" />
                 </div>
                 <div class="flex flex-col">
                     <p class="font-bold">Çalışma Saatleri</p>
@@ -16,7 +16,7 @@
             <div class="flex flex-row justify-start">
                 <div class="mr-4">
                     <!-- resim gelecek -->
-                    <img src="/images/icons8-money-bag-48.png" alt="">
+                    <img src="@/assets/images/icons8-money-bag-48.png" alt="" />
                 </div>
                 <div class="flex flex-col">
                     <p class="font-bold">Ortlama Hizmet Fiyatı</p>
@@ -28,7 +28,7 @@
             <div class="flex flex-row justify-start">
                 <div class="mr-4">
                     <!-- resim gelecek -->
-                    <img src="/images/icons8-last-24-hours-48.png" alt="">
+                    <img src="@/assets/images/icons8-last-24-hours-48.png" alt="" />
                 </div>
                 <div class="flex flex-col">
                     <p class="font-bold">Alınan Teklif Sayısı</p>
@@ -40,7 +40,7 @@
             <div class="flex flex-row justify-start">
                 <div class="mr-4">
                     <!-- resim gelecek -->
-                    <img src="/images/icons8-thumbs-up-48.png" alt="">
+                    <img src="@/assets/images/icons8-thumbs-up-48.png" alt="" />
                 </div>
                 <div class="flex flex-col">
                     <p class="font-bold">Tamamlanan Proje Sayısı</p>
@@ -52,7 +52,7 @@
             <div class="flex flex-row justify-start">
                 <div class="mr-4">
                     <!-- resim gelecek -->
-                    <img src="/images/icons8-handshake-48.png" alt="">
+                    <img src="@/assets/images/icons8-handshake-48.png" alt="" />
                 </div>
                 <div class="flex flex-col">
                     <p class="font-bold">Tamamlanan Hizmet Sayısı</p>

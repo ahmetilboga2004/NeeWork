@@ -4,8 +4,7 @@ export default async (to, from, next) => {
   const authStore = useAuthStore()
 
   if (await authStore.checkAuth()) {
-    console.log(authStore.user)
-    next({ name: authStore.user.role })
+    next({ name: 'home' })
     return
   } else {
     next()

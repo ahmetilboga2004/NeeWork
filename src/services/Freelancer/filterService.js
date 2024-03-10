@@ -1,11 +1,13 @@
-export default async (username) => {
+export default async (formDatas) => {
     try {
-        const response = await fetch('http://localhost:3000/freelancer/', {
+        console.log(JSON.stringify(formDatas.value))
+
+        const response = await fetch('http://localhost:3000/service/filter', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ username }),
+            body: JSON.stringify(formDatas.value),
             credentials: 'include'
         })
         const data = await response.json()
@@ -13,11 +15,11 @@ export default async (username) => {
             console.log(data)
             return { success: true, data }
         } else {
-            console.warn(data)
+            console.log(data)
             return { success: false, error: data.error }
         }
     } catch (error) {
-        console.error(error)
+        console.log(error)
         return { success: false, error }
     }
 }

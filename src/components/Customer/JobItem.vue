@@ -1,3 +1,15 @@
+<script setup>
+import { defineProps, ref } from "vue"
+
+defineProps({
+    job: Object
+})
+
+let bookmarkSolid = ref(false)
+
+
+</script>
+
 <template>
     <div class="grid grid-cols-1 gap-4 xl:grid-cols-2 2xl:grid-cols-3">
 
@@ -5,26 +17,26 @@
             <div class="mb-2">
                 <div class="flex items-center mb-3">
                     <div class="flex-shrink-0">
-                        <img class="w-10 h-10 rounded-full" src="/images/profile.jpg" alt="Profile Photo" />
+                        <img class="w-10 h-10 rounded-full" src="@/assets/images/profile.jpg" alt="Profile Photo" />
                     </div>
                     <div class="flex-1 min-w-0 ms-4">
-                        <p class="text-sm font-medium truncate">Ahmet İlboga</p>
-                        <p class="text-sm font-mono truncate">21/12/2023</p>
+                        <p class="text-sm font-medium truncate">{{ job.user.fullName }}</p>
+                        <p class="text-sm font-mono truncate">{{ job.publishDate }}</p>
                     </div>
                     <div class="action-icons text-2xl font-semibold">
-                        <button type="button" class="text-green-700">
-                            <i class="fa-regular fa-bookmark grid hover:bg-text-green-700 "></i>
+                        <button type="button" class="text-green-700" @mouseover="bookmarkSolid = true"
+                            @mouseout="bookmarkSolid = false">
+                            <i :class="bookmarkSolid ? 'fa-solid' : 'fa-regular'"
+                                class="fa-bookmark grid hover:bg-text-green-700 "></i>
                         </button>
                     </div>
                 </div>
                 <div class="mb-3">
                     <h5 class="text-lg font-bold tracking-tight text-gray-900">
-                        Noteworthy technology acquisitions 2021
+                        {{ job.title }}
                     </h5>
                     <p class="text-sm font-normal text-gray-700">
-                        Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological
-                        order. Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse
-                        chronological order. reverse chronological order. reverse order
+                        {{ job.shortDesc }}
                     </p>
 
                 </div>
@@ -33,7 +45,7 @@
             <div class="flex justify-between items-center self-end">
                 <div class="text-lg bg-green-50 rounded-lg p-2 w-fit font-bold">
                     <p class="px-2">
-                        <i class="fa-solid fa-turkish-lira-sign text-green-500 mr-2"></i>200 - 1500
+                        <i class="fa-solid fa-turkish-lira-sign text-green-500 mr-2"></i>{{ job.price }}
                     </p>
                 </div>
                 <div>
